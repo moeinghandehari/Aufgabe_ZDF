@@ -22,8 +22,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public ItemAdapter(Context context, ArrayList<Item>itemList) {
         mContext = context;
         mItemList = itemList;
-        notifyDataSetChanged();
     }
+
 
     @NonNull
     @Override

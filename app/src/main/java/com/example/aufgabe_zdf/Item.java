@@ -8,16 +8,32 @@ public class Item {
 
     // A constructor for test without image
     public Item(String headline, String titel, String beschreibung) {
-        mHeadline = headline;
-        mTitel = titel;
-        mBeschreibung = beschreibung;
+        this.setHeadline(headline);
+        this.setTitel(titel);
+        this.setBeschreibung(beschreibung);
     }
 
     public Item(String imageUrl, String headline, String titel, String beschreibung) {
-        mImageUrl = imageUrl;
-        mHeadline = headline;
-        mTitel = titel;
-        mBeschreibung = beschreibung;
+        this.setImageUrl(imageUrl);
+        this.setHeadline(headline);
+        this.setTitel(titel);
+        this.setBeschreibung(beschreibung);
+    }
+
+    private void setImageUrl(String mImageUrl) {
+        this.mImageUrl = mImageUrl;
+    }
+
+    private void setHeadline(String mHeadline) {
+        this.mHeadline = mHeadline;
+    }
+
+    private void setTitel(String mTitel) {
+        this.mTitel = mTitel;
+    }
+
+    private void setBeschreibung(String mBeschreibung) {
+        this.mBeschreibung = mBeschreibung;
     }
 
     public String getHeadline() {
