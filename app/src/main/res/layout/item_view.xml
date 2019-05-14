@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#383c42">
+
+        <!-- Define image view for "teaser image"-->
+        <ImageView
+            android:id="@+id/image_view_teaser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            tools:src="@drawable/ic_zdf"/>
+
+        <!-- Define text view for "headline"-->
+        <TextView
+            android:id="@+id/text_view_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            tools:text="test"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"/>
+
+        <!-- Define text view for "titel"-->
+        <TextView
+            android:id="@+id/text_view_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            tools:text="test"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="35sp"
+            android:textStyle="bold"/>
+
+        <!-- Define text view for "beschreibung"-->
+        <TextView
+            android:id="@+id/text_view_beschreibung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            tools:text="test2"
+            android:textStyle="bold"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
