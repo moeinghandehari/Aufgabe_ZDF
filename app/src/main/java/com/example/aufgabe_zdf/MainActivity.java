@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.textclassifier.TextLinks;
 import android.widget.Toast;
 
@@ -25,7 +26,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView mRecyclerView;
-    private ItemAdapter mItemAdapter;
     private ArrayList<Item> mItemList;
     private RequestQueue mRequestQueue;
 
@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
                             JSONArray jsonArray = response.getJSONArray("stage");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject stage_item = jsonArray.getJSONObject(i);
-                                mItemList.add(new Item(stage_item.getString("headline"), stage_item.getString("titel"), stage_item.getString("beschreibung")));
+                                String imageUrl = stage_item.getJSONObject("teaserBild").getJSONObject("1500").getString("url");
+                                mItemList.add(new Item(imageUrl, stage_item.getString("headline"), stage_item.getString("titel"), stage_item.getString("beschreibung")));
                             }
                             ItemAdapter itemAdapter = new ItemAdapter(MainActivity.this, mItemList);
                             mRecyclerView.setAdapter(itemAdapter);

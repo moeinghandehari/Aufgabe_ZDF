@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/image_view_teaser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             android:padding="5dp"
             tools:src="@drawable/ic_zdf"/>
 
