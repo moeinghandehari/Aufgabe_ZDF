@@ -39,7 +39,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         itemViewHolder.mHeadline.setText(currentItem.getHeadline());
         itemViewHolder.mTitel.setText(currentItem.getTitel());
         itemViewHolder.mBeschreibung.setText(currentItem.getBeschreibung());
-        Picasso.with(mContext).load(currentItem.getImageUrl()).fit().centerInside().into(itemViewHolder.mImageView);
+        Picasso.with(mContext).load(currentItem.getImageUrl()).fit().centerCrop().into(itemViewHolder.mImageView);
     }
 
     @Override

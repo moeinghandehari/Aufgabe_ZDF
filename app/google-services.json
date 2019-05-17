@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "566680849052",
+    "firebase_url": "https://aufgabe-zdf.firebaseio.com",
+    "project_id": "aufgabe-zdf",
+    "storage_bucket": "aufgabe-zdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566680849052:android:104d74b35e5fd5b1",
+        "android_client_info": {
+          "package_name": "com.example.aufgabe_zdf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566680849052-90fc0ikkc6pvk4lmfkg842aeal2mhcgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aufgabe_zdf",
+            "certificate_hash": "bbec1d2c0cd56d8d86909e915bbe1f8e5b89070f"
+          }
+        },
+        {
+          "client_id": "566680849052-not3o5ev1og8qllbjper8426jr0l3iut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY0k73fqMGOLuWXb5U2AFyAPBu2CruNlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566680849052-not3o5ev1og8qllbjper8426jr0l3iut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

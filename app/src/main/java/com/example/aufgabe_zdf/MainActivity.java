@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.textclassifier.TextLinks;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,10 +22,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private ArrayList<Item> mItemList;
     private RequestQueue mRequestQueue;
+    ItemAdapter itemAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +34,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Swipe refresh implementation
-        swipeRefreshLayout = findViewById(R.id.swipe_refresh_view);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_view);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
-                        mRequestQueue = Volley.newRequestQueue(MainActivity.this);
                         mItemList.clear();
+                        itemAdapter.notifyDataSetChanged();
+                        mRequestQueue = Volley.newRequestQueue(MainActivity.this);
                         parseJSON();
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
                 }, 1000);
             }
@@ -70,11 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONArray jsonArray = response.getJSONArray("stage");
                             for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject stage_item = jsonArray.getJSONObject(i);
-                                String imageUrl = stage_item.getJSONObject("teaserBild").getJSONObject("1500").getString("url");
-                                mItemList.add(new Item(imageUrl, stage_item.getString("headline"), stage_item.getString("titel"), stage_item.getString("beschreibung")));
+                                mItemList.add(new Item(jsonArray.getJSONObject(i).getJSONObject("teaserBild").getJSONObject("1500").getString("url"), jsonArray.getJSONObject(i).getString("headline"), jsonArray.getJSONObject(i).getString("titel"), jsonArray.getJSONObject(i).getString("beschreibung")));
                             }
-                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.this, mItemList);
+                            itemAdapter = new ItemAdapter(MainActivity.this, mItemList);
                             mRecyclerView.setAdapter(itemAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -88,4 +86,5 @@ public class MainActivity extends AppCompatActivity {
         });
         mRequestQueue.add(request);
     }
+
 }

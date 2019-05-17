@@ -5,13 +5,7 @@ public class Item {
     private String mHeadline;
     private String mTitel;
     private String mBeschreibung;
-
-    // A constructor for test without image
-    public Item(String headline, String titel, String beschreibung) {
-        this.setHeadline(headline);
-        this.setTitel(titel);
-        this.setBeschreibung(beschreibung);
-    }
+    
 
     public Item(String imageUrl, String headline, String titel, String beschreibung) {
         this.setImageUrl(imageUrl);
