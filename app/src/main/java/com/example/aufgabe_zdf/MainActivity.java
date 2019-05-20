@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -85,6 +86,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mRequestQueue.add(request);
+    }
+
+
+    // Activity "lifecycle" functions
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("Main Activity lifecycle", "Activity started");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        parseJSON();
+        Log.i("Main Activity lifecycle", "Activity restarted");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("Main Activity lifecycle", "Activity resumed");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("Main Activity lifecycle", "Activity paused");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mItemList.clear();
+        itemAdapter.notifyDataSetChanged();
+        Log.i("Main Activity lifecycle", "Activity stopped");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("Main Activity lifecycle", "Activity destroyed");
     }
 
 }
