@@ -7,10 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -46,10 +46,12 @@ public class FeedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Log.d("FeedFragment lifecycle", "onCreateView");
+
         View rootView = inflater.inflate(R.layout.feed_view, container, false);
 
         // Swipe refresh implementation
-        mSwipeRefreshLayout = rootView.findViewById(R.id.feel_swipe_list);
+        mSwipeRefreshLayout = rootView.findViewById(R.id.feed_swipe_list);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -105,9 +107,16 @@ public class FeedFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("FeedFragment lifecycle", "onStart");
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
         mItemList.clear();
         itemAdapter.notifyDataSetChanged();
+        Log.d("FeedFragment lifecycle", "onStop");
     }
 }

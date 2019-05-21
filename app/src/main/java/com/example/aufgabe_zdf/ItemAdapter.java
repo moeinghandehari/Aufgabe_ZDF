@@ -36,10 +36,21 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int position) {
         Item currentItem = mItemList.get(position);
 
-        itemViewHolder.mHeadline.setText(currentItem.getHeadline());
-        itemViewHolder.mTitel.setText(currentItem.getTitel());
-        itemViewHolder.mBeschreibung.setText(currentItem.getBeschreibung());
-        Picasso.with(mContext).load(currentItem.getImageUrl()).fit().centerCrop().into(itemViewHolder.mImageView);
+        if(currentItem.getHeadline() == "")
+            itemViewHolder.mHeadline.setVisibility(View.GONE);
+        else itemViewHolder.mHeadline.setText(currentItem.getHeadline());
+
+        if(currentItem.getTitel() == "")
+            itemViewHolder.mTitel.setVisibility(View.GONE);
+        else itemViewHolder.mTitel.setText(currentItem.getTitel());
+
+        if(currentItem.getBeschreibung() == "")
+            itemViewHolder.mBeschreibung.setVisibility(View.GONE);
+        else itemViewHolder.mBeschreibung.setText(currentItem.getBeschreibung());
+
+        if(currentItem.getImageUrl() == "")
+            itemViewHolder.mImageView.setVisibility(View.GONE);
+        else Picasso.with(mContext).load(currentItem.getImageUrl()).fit().centerCrop().into(itemViewHolder.mImageView);
     }
 
     @Override

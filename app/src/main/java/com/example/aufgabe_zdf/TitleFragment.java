@@ -7,10 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TitelFragment extends Fragment {
+public class TitleFragment extends Fragment {
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
@@ -36,7 +36,7 @@ public class TitelFragment extends Fragment {
     private RequestQueue mRequestQueue;
     ItemAdapter itemAdapter;
 
-    public TitelFragment() {
+    public TitleFragment() {
         // Required empty public constructor
     }
 
@@ -45,10 +45,12 @@ public class TitelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Log.d("TitleFragment lifecycle", "onCreateView");
+
         View rootView = inflater.inflate(R.layout.feed_view, container, false);
 
         // Swipe refresh implementation
-        mSwipeRefreshLayout = rootView.findViewById(R.id.feel_swipe_list);
+        mSwipeRefreshLayout = rootView.findViewById(R.id.feed_swipe_list);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -104,7 +106,14 @@ public class TitelFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        Log.d("TitleFragment lifecycle", "onStart");
+        super.onStart();
+    }
+
+    @Override
     public void onStop() {
+        Log.d("TitleFragment lifecycle", "onStop");
         super.onStop();
         mItemList.clear();
         itemAdapter.notifyDataSetChanged();

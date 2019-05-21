@@ -16,6 +16,7 @@ public class Item {
 
     // item only with title
     public Item(String headline, String titel, String beschreibung) {
+        this.setImageUrl("");
         this.setHeadline(headline);
         this.setTitel(titel);
         this.setBeschreibung(beschreibung);
@@ -24,6 +25,9 @@ public class Item {
     // item only with image
     public Item(String imageUrl) {
         this.setImageUrl(imageUrl);
+        this.setHeadline("");
+        this.setTitel("");
+        this.setBeschreibung("");
     }
 
     private void setImageUrl(String mImageUrl) {

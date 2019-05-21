@@ -16,7 +16,7 @@ public class FeedAdapter extends FragmentPagerAdapter {
         if(i == 0)
             return new FeedFragment();
         else if(i == 1)
-            return new TitelFragment();
+            return new TitleFragment();
         else return new ImageFragment();
     }
 
