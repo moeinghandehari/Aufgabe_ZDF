@@ -1,8 +1,10 @@
 package com.example.aufgabe_zdf;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +46,7 @@ public class FeedFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         Log.d("FeedFragment lifecycle", "onCreateView");
@@ -60,7 +63,7 @@ public class FeedFragment extends Fragment {
                     public void run() {
                         mItemList.clear();
                         itemAdapter.notifyDataSetChanged();
-                        mRequestQueue = Volley.newRequestQueue(getActivity());
+                        mRequestQueue = Volley.newRequestQueue(Objects.requireNonNull(getActivity()));
                         parseJSON();
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
@@ -74,7 +77,7 @@ public class FeedFragment extends Fragment {
 
         mItemList = new ArrayList<Item>();
 
-        mRequestQueue = Volley.newRequestQueue(getActivity());
+        mRequestQueue = Volley.newRequestQueue(Objects.requireNonNull(getActivity()));
 
         parseJSON();
 
@@ -89,7 +92,7 @@ public class FeedFragment extends Fragment {
                         try {
                             JSONArray jsonArray = response.getJSONArray("stage");
                             for (int i = 0; i < jsonArray.length(); i++) {
-                                mItemList.add(new Item(jsonArray.getJSONObject(i).getJSONObject("teaserBild").getJSONObject("1500").getString("url"), jsonArray.getJSONObject(i).getString("headline"), jsonArray.getJSONObject(i).getString("titel"), jsonArray.getJSONObject(i).getString("beschreibung")));
+                                mItemList.add(new Item(jsonArray.getJSONObject(i).getJSONObject("teaserBild").getJSONObject("1280").getString("url"), jsonArray.getJSONObject(i).getString("headline"), jsonArray.getJSONObject(i).getString("titel"), jsonArray.getJSONObject(i).getString("beschreibung")));
                             }
                             itemAdapter = new ItemAdapter(getActivity(), mItemList);
                             mRecyclerView.setAdapter(itemAdapter);

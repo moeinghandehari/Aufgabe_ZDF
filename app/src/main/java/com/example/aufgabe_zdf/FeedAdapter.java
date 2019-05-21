@@ -14,23 +14,21 @@ public class FeedAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int i) {
         if(i == 0)
-            return new FeedFragment();
-        else if(i == 1)
             return new TitleFragment();
-        else return new ImageFragment();
+        else
+            return new ImageFragment();
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         if(position == 0)
-            return "Feed";
-        else if(position == 1) return "Titles";
+            return "Titles";
         else return "Images";
     }
 

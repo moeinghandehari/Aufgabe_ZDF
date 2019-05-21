@@ -36,19 +36,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int position) {
         Item currentItem = mItemList.get(position);
 
-        if(currentItem.getHeadline() == "")
+        if(currentItem.getHeadline().equals(""))
             itemViewHolder.mHeadline.setVisibility(View.GONE);
         else itemViewHolder.mHeadline.setText(currentItem.getHeadline());
 
-        if(currentItem.getTitel() == "")
+        if(currentItem.getTitel().equals(""))
             itemViewHolder.mTitel.setVisibility(View.GONE);
         else itemViewHolder.mTitel.setText(currentItem.getTitel());
 
-        if(currentItem.getBeschreibung() == "")
+        if(currentItem.getBeschreibung().equals(""))
             itemViewHolder.mBeschreibung.setVisibility(View.GONE);
         else itemViewHolder.mBeschreibung.setText(currentItem.getBeschreibung());
 
-        if(currentItem.getImageUrl() == "")
+        if(currentItem.getImageUrl().equals(""))
             itemViewHolder.mImageView.setVisibility(View.GONE);
         else Picasso.with(mContext).load(currentItem.getImageUrl()).fit().centerCrop().into(itemViewHolder.mImageView);
     }
@@ -61,13 +61,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     // Define View Holder class
     public class ItemViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView mImageView;
-        public TextView mHeadline;
-        public TextView mTitel;
-        public TextView mBeschreibung;
+        private ImageView mImageView;
+        private TextView mHeadline;
+        private TextView mTitel;
+        private TextView mBeschreibung;
 
         // Constructor
-        public ItemViewHolder(@NonNull View itemView) {
+        private ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.image_view_teaser);
             mHeadline = itemView.findViewById(R.id.text_view_headline);

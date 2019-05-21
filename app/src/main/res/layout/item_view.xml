@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             tools:text="test"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@color/colorText"
             android:textSize="20sp"/>
 
         <!-- Define text view for "titel"-->
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             tools:text="test"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@color/colorText"
             android:textSize="35sp"
             android:textStyle="bold"/>
 
@@ -51,7 +51,7 @@
             android:padding="5dp"
             tools:text="test2"
             android:textStyle="bold"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@color/colorText"
             android:textSize="15sp"/>
 
     </LinearLayout>

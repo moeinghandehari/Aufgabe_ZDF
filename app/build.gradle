@@ -7,10 +7,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.aufgabe_zdf"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0 alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

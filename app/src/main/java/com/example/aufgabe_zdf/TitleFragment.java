@@ -3,6 +3,7 @@ package com.example.aufgabe_zdf;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +44,7 @@ public class TitleFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         Log.d("TitleFragment lifecycle", "onCreateView");
@@ -59,7 +61,7 @@ public class TitleFragment extends Fragment {
                     public void run() {
                         mItemList.clear();
                         itemAdapter.notifyDataSetChanged();
-                        mRequestQueue = Volley.newRequestQueue(getActivity());
+                        mRequestQueue = Volley.newRequestQueue(Objects.requireNonNull(getActivity()));
                         parseJSON();
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
@@ -73,7 +75,7 @@ public class TitleFragment extends Fragment {
 
         mItemList = new ArrayList<Item>();
 
-        mRequestQueue = Volley.newRequestQueue(getActivity());
+        mRequestQueue = Volley.newRequestQueue(Objects.requireNonNull(getActivity()));
 
         parseJSON();
 
